@@ -1,0 +1,15 @@
+{% load wagtailcore_tags menu_tags %}
+{% get_menu as menu %}
+    {% for section in menu %}
+        <ul style="text-align:center;">
+          {% for menu_item in section.menu %}
+            {% with menu_item=menu_item.value %}
+              <li style="display: inline;">
+                <a href="{% pageurl menu_item.page %}">{{menu_item.name}}</a>
+              </li>
+            {% endwith %}
+          {% endfor %}
+        </ul>
+    {%endfor%}
+  <hr>
+

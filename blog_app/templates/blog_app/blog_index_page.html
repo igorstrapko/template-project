@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% load static wagtailcore_tags wagtailimages_tags %}
+
+{% block body_class %}template-blog_index_page{% endblock %}
+
+{% block content %}
+
+<h1>{{ page.title }}</h1>
+<h4>{{ page.lead_line }}</h4>
+
+<h6>lastly in blog:</h6>
+
+  {% for article in articles %}
+
+    {% with article=article.specific %}
+            <p><a href="{% pageurl article %}">
+              {{ article.title }}
+            </a></p>
+             <p>By {% for iter in article.article_authors.all %}
+              {{ iter.author.name }}{% if not forloop.last %}, {% endif %}
+            {% endfor %}</p>
+          {% image article.hero_image fill-630x450 as hero_image %}
+          <a href="{% pageurl article %}">
+            <img src="{{ hero_image.url }}">
+          </a>
+        <p>{{ article.lead_line }}</p>
+    {% endwith %}
+
+  {% endfor %}
+</div>
+{% if articles.paginator.num_pages > 1 %}
+  {% include 'includes/paginator/paginator.html' %}
+{% endif %}
+
+{% endblock content %}

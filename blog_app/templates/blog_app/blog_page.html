@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% load wagtailcore_tags wagtailimages_tags %}
+
+{% block body_class %}template-blog_page{% endblock %}
+
+{% block meta_description %}{{ page.lead_line }}{% endblock %}
+
+{% block content %}
+
+    {% image page.hero_image fill-630x450 as hero_image %}
+    <a href="{% pageurl page %}">
+    <img src="{{ hero_image.url }}">
+    </a>
+
+    <h3>{{ page.title }}</h3>
+
+    <p>{{ page.date }}</p>
+
+    <h5>{{ page.lead_line}}</h5>
+
+    {% for block in page.body %}
+      {% include 'includes/content-block/content-block.html' %}
+    {% endfor %}
+
+    <p>
+      By {% for iter in page.article_authors.all %}
+      {{ iter.author.name }}{% if not forloop.last %}, {% endif %}
+      {% endfor %}
+    </p>
+
+    <p>
+      <a href="{% pageurl page.get_parent.specific %}">
+        [Link to parent page]
+      </a>
+    </p>
+
+{% endblock %}

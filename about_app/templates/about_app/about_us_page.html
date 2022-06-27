@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% load wagtailcore_tags wagtailimages_tags %}
+
+{% block body_class %}template-about_us_page{% endblock %}
+
+{% block content %}
+
+  <h1>{{ page.title }}</h1>
+
+  {% for block in page.body %}
+    {% include 'includes/content-block/content-block.html' %}
+  {% endfor %}
+
+{% endblock content %}

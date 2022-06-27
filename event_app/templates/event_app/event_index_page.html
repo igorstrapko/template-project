@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% load static wagtailcore_tags wagtailimages_tags %}
+
+{% block body_class %}template-event_index_page{% endblock %}
+
+{% block content %}
+
+    <h1>{{ page.title }}</h1>
+
+    {% image page.image fill-200x200 format-webp as image_webp %}
+    <source srcset="{{ image_webp.url }}" type="image/webp">
+
+    {% image page.image fill-500x500 as photo %}
+    <img src="{{ photo.url }}" alt="{{ photo.alt }}" />
+
+    <h2>{{ page.lead_line }}</h2>
+
+    <div>
+        {% for article in events %}
+          {% with event=article.specific %}
+          <div>
+            <h3><a href="{% pageurl article %}">{{ article.title }}</a></h3>
+            <p>{{ article.description|richtext }}</p>
+            <p>on {{ article.date }} at {{ article.start_time }}</p>
+            {% if not forloop.last %}
+            <hr>
+            {% endif %}
+          </div>
+          {% endwith %}
+        {% endfor %}
+    </div>
+
+    {% if events.paginator.num_pages > 1 %}
+        {% include 'includes/paginator/paginator.html' %}
+    {% endif %}
+
+{% endblock content %}

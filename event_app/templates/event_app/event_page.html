@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% load static wagtailcore_tags wagtailimages_tags %}
+
+{% block body_class %}template-event_page{% endblock %}
+
+{% block content %}
+
+    <h3>{{ page.title }}</h3>
+
+    {% image page.hero_image width-400 as hero_image %}
+    <img src="{{ hero_image.url }}" alt="{{ hero_image.alt }}" />
+
+    <p>{{ page.description|richtext }}</p>
+
+    <h5>Details:</h5>
+    <p>
+        Date and time: {{ page.date }} at {{ page.start_time }} {% if page.end_time %} to {{ page.end_time }}{% endif %}
+    </p>
+
+    {% if page.venue %}
+    <p>Venue: {{ page.venue }}</p>
+    {% endif %}
+
+    {% if page.address %}
+    <p>Address: {{ page.address }}</p>
+    {% endif %}
+
+    {% if page.url_link %}
+    <p>To register <a href="{{ page.url_link }}">CLICK HERE</a></p>
+    {% endif %}
+
+{% endblock content %}

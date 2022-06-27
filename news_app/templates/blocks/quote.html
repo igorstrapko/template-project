@@ -1,0 +1,8 @@
+<figure class="quote">
+    <blockquote class="quote__text">
+      “{{ self.text }}”
+    </blockquote>
+    {% if self.author %}
+      <figcaption class="quote__author">– {{ self.author }}</figcaption>
+    {% endif %}
+  </figure>

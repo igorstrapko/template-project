@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% load static wagtailcore_tags wagtailimages_tags %}
+
+{% block body_class %}template-news_page{% endblock %}
+{% block meta_description %}{{ page.lead_line }}{% endblock %}
+
+{% block content %}
+{% include 'includes/article/article.html' with badge_name="News" badge_destination="/news" %}
+<p><a href="{% pageurl self.get_parent.specific %}">[to the parent page]</a></p>
+{% endblock content %}

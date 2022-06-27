@@ -1,0 +1,13 @@
+{% load wagtailcore_tags %}
+{% if youtube_embed %}
+    {% if self.headline %}
+      <div>{{self.headline}}</div>
+    {% endif %}
+    <div>
+      <iframe width="560" height="315" src="{{ youtube_embed }}"
+        title="YouTube video player"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen></iframe>
+    </div>
+{% endif %}

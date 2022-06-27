@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% load static wagtailcore_tags wagtailimages_tags %}
+
+{% block body_class %}template-news_index_page{% endblock %}
+
+{% block content %}
+
+<h1>{{ page.title }}</h1>
+<h4>{{ page.lead_line }}</h4>
+
+<h6>last news:</h6>
+
+  {% for article in articles %}
+
+    {% with article=article.specific %}
+            <p><a href="{% pageurl article %}">
+              {{ article.title }}
+            </a></p>
+          {% image article.hero_image fill-300x300 as image %}
+          <a href="{% pageurl article %}">
+            <img src="{{ image.url }}">
+          </a>
+        <p>{{ article.lead_line }}</p>
+        {% if not forloop.last %}
+            <hr>
+        {% endif %}
+    {% endwith %}
+  {% endfor %}
+</div>
+{% if articles.paginator.num_pages > 1 %}
+  {% include 'includes/paginator/paginator.html' %}
+{% endif %}
+
+{% endblock content %}

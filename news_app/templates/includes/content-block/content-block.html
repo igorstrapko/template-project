@@ -1,0 +1,29 @@
+{% load wagtailcore_tags wagtailimages_tags %}
+{% if block.block_type == "image" %}
+  <div class="article__image-block article__image-block--{{block.value.image_type}}">
+    <figure>
+      <picture>
+        {% if block.value.image_type == 'full_width' %}
+          {% image block.value.image width-1510 format-webp as image_webp %}
+          <source srcset="{{ image_webp.url }}" type="image/webp">
+          {% image block.value.image width-1510 as photo %}
+          <img src="{{ photo.url }}" alt="{{ photo.alt }}" />
+        {% else %}
+          {% image block.value.image width-720 format-webp as image_webp %}
+          <source srcset="{{ image_webp.url }}" type="image/webp">
+          {% image block.value.image width-720 as photo %}
+          <img src="{{ photo.url }}" alt="{{ photo.alt }}" />
+        {% endif %}
+      </picture>
+      {% if block.value.caption %}
+        <figcaption>{{block.value.caption}}</figcaption>
+      {% endif %}
+    </figure>
+  </div>
+{% elif block.block_type == "donation_block" %}
+  {{ block }}
+{% else %}
+  <div class="article__block" data-type="{{block.block_type}}">
+    {{ block }}
+  </div>
+{% endif %}

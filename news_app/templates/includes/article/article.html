@@ -1,0 +1,20 @@
+{% load wagtailcore_tags wagtailimages_tags %}
+
+<article class="article">
+  <div class="article__header">
+    <div class="article__news-badge">
+      <a href="{{badge_destination}}">{{badge_name}}</a>
+    </div>
+    <h2 class="article__title">{{ page.title }}</h2>
+    <div class="article__hero">
+      {% image page.hero_image fill-1440x720 %}
+    </div>
+    <div class="article__lead">{{ page.lead_line }}</div>
+    <p class="article__date">{{ page.date }}</p>
+  </div>
+  <div class="article__contents">
+    {% for block in self.body %}
+      {% include 'includes/content-block/content-block.html' %}
+    {% endfor %}
+  </div>
+</article>

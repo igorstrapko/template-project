@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% load static wagtailcore_tags wagtailimages_tags %}
+
+{% block body_class %}template-homepage{% endblock %}
+
+{% block content %}
+
+  <h1>{{page.title}}</h1>
+
+  {% image self.hero_image fill-1330x730 format-webp as image_webp %}
+
+    <source srcset="{{ image_webp.url }}" type="image/webp">
+
+  {% image self.hero_image fill-1330x730 as photo %}
+
+    <img src="{{ photo.url }}" alt="{{ photo.alt }}" />
+
+  <h3>{{page.lead_line}}</h3>
+
+  {% if page.hero_link_page %}
+
+    <a
+      href="{% pageurl self.hero_link_page %}" class="button button--with-arrow">
+      [hero_link to wherever we want]
+    </a>
+
+  {% endif %}
+
+  {{ page.body|richtext }}
+
+{% endblock content %}
