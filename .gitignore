@@ -3,3 +3,4 @@ __pycache__
 *.pyc
 *.ini
 db.sqlite3
+*/migrations/0*
