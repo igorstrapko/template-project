@@ -57,6 +57,7 @@ class HomePage(Page):
         'event_app.EventIndexPage',
         'event_app.EventPage',
         'about_app.AboutUsPage',
+        'contact_app.ContactPage',
     ]
 
     content_panels = Page.content_panels + [

@@ -1,19 +1,9 @@
-{% load wagtailcore_tags menu_tags %}
-{% get_menu as menu %}
+{% load wagtailcore_tags %}
+
 <footer>
-    <hr>
-    <p>[footer:]</p>
-    <ul>
-    {% for section in menu %}
-      {% for menu_item in section.menu %}
-        {% with menu_item=menu_item.value %}
-          <li>
-            <a href="{% pageurl menu_item.page %}">{{menu_item.name}}</a>
-          </li>
-        {% endwith %}
-      {% endfor %}
-    {% endfor %}
-    </ul>
-      <div>Social media:</div>
-      {% include 'includes/social-media-links/social-media-links.html' with socialmedia=settings.home.SocialMediaSettings %}
+
+  <hr>
+
+  {% include 'includes/social-media-links/social-media-links.html' with socialmedia=settings.home.SocialMediaSettings %}
+
 </footer>
