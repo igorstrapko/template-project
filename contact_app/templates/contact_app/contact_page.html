@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% load wagtailcore_tags %}
+
+{% block body_class %}template-contact_page{% endblock body_class %}
+
+{% block content %}
+
+  <h1>{{ self.title }}</h1>
+
+  <h5> {{ self.lead_line|richtext }}</h5>
+
+    {% include_block page.contact_details %}
+
+{% endblock content %}

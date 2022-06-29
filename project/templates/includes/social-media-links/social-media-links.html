@@ -1,15 +1,15 @@
 {% load wagtailcore_tags %}
-<ul>
+
+<ul class="social-media-links {{extra_class}}">
   {% if socialmedia.facebook %}
-    <li><a href="{{socialmedia.facebook}}">Facebook</a></li>
+    <li class="social-media-links__facebook"><a href="{{ socialmedia.facebook }}">Facebook</a></li>
   {% endif %}
   {% if socialmedia.twitter %}
-    <li><a href="{{socialmedia.twitter}}">Twitter</a></li>
+    <li class="social-media-links__twitter"><a href="{{ socialmedia.twitter }}">Twitter</a></li>
   {% endif %}
   {% if socialmedia.youtube %}
-    <li><a href="{{socialmedia.youtube}}">Youtube</a></li>
+    <li class="social-media-links__youtube"><a href="{{ socialmedia.youtube }}">Youtube</a></li>
   {% endif %}
-  {% if socialmedia.instagram %}
-    <li><a href="{{socialmedia.instagram}}">Instagram</a></li>
-  {% endif %}
+    <li class="social-media-links__instagram"><a href="{{ socialmedia.instagram }}">Instagram</a></li>
 </ul>
+hey

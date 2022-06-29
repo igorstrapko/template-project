@@ -1,6 +1,9 @@
 {% load wagtailcore_tags menu_tags %}
+
 {% get_menu as menu %}
+
     {% for section in menu %}
+
         <ul style="text-align:center;">
           {% for menu_item in section.menu %}
             {% with menu_item=menu_item.value %}
@@ -10,6 +13,7 @@
             {% endwith %}
           {% endfor %}
         </ul>
-    {%endfor%}
-  <hr>
 
+    {%endfor%}
+
+<hr>

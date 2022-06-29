@@ -80,15 +80,24 @@ class MenuItemBlock(StructBlock):
 
 
 class ContactBlock(StructBlock):
-    street = CharBlock()
-    town = CharBlock()
-    post_code = CharBlock()
-    phone = IntegerBlock()
-    email = EmailBlock()
+    building_number_or_name = CharBlock(required=False)
+    street = CharBlock(required=False)
+    town = CharBlock(required=False)
+    post_code = CharBlock(required=False)
+    phone = IntegerBlock(required=False)
+    email = EmailBlock(required=False)
+
+    class Meta:
+        template = "includes/contact/contact.html"
+        label = "Contact Details"
 
 
 class SocialMediaBlock(StructBlock):
-    twitter = URLBlock()
-    facebook = URLBlock()
-    instagram = URLBlock()
-    linkedin = URLBlock()
+    twitter = URLBlock(required=False, help_text='Your Twitter page URL')
+    facebook = URLBlock(required=False, help_text='Your Facebook page URL')
+    instagram = URLBlock(required=False, help_text='Your Instagram, page URL')
+    linkedin = URLBlock(required=False, help_text='Your LinkedIn page URL')
+
+    class Meta:
+        template = "includes/social-media/social-media.html"
+        label = "Social Media Links"
