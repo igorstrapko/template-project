@@ -10,7 +10,6 @@ from wagtail.admin.edit_handlers import (
 )
 from wagtail.search import index
 from wagtail.snippets.models import register_snippet
-from wagtail.contrib.settings.models import BaseSetting, register_setting
 
 
 from modelcluster.models import ClusterableModel
@@ -91,23 +90,3 @@ class Menu(index.Indexed, ClusterableModel):
 
     def __str__(self):
         return self.title
-
-
-@register_setting
-class SocialMediaSettings(BaseSetting):
-    id = models.AutoField(primary_key=True)
-    facebook = models.URLField(
-        help_text='Your Facebook page URL', blank=True)
-    instagram = models.URLField(
-        help_text='Your Instagram URL', blank=True)
-    youtube = models.URLField(
-        help_text='Your YouTube channel or user account URL', blank=True)
-    twitter = models.URLField(
-        help_text='Your Twitter channel or user account URL', blank=True)
-
-    panels = [
-        FieldPanel('facebook'),
-        FieldPanel('instagram'),
-        FieldPanel('youtube'),
-        FieldPanel('twitter'),
-    ]
