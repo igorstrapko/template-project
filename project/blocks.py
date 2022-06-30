@@ -90,14 +90,3 @@ class ContactBlock(StructBlock):
     class Meta:
         template = "includes/contact/contact.html"
         label = "Contact Details"
-
-
-class SocialMediaBlock(StructBlock):
-    twitter = URLBlock(required=False, help_text='Your Twitter page URL')
-    facebook = URLBlock(required=False, help_text='Your Facebook page URL')
-    instagram = URLBlock(required=False, help_text='Your Instagram, page URL')
-    linkedin = URLBlock(required=False, help_text='Your LinkedIn page URL')
-
-    class Meta:
-        template = "includes/social-media/social-media.html"
-        label = "Social Media Links"

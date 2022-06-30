@@ -1,15 +1,10 @@
-{% load wagtailcore_tags %}
-
-<ul class="social-media-links {{extra_class}}">
-  {% if socialmedia.facebook %}
-    <li class="social-media-links__facebook"><a href="{{ socialmedia.facebook }}">Facebook</a></li>
-  {% endif %}
-  {% if socialmedia.twitter %}
-    <li class="social-media-links__twitter"><a href="{{ socialmedia.twitter }}">Twitter</a></li>
-  {% endif %}
-  {% if socialmedia.youtube %}
-    <li class="social-media-links__youtube"><a href="{{ socialmedia.youtube }}">Youtube</a></li>
-  {% endif %}
-    <li class="social-media-links__instagram"><a href="{{ socialmedia.instagram }}">Instagram</a></li>
-</ul>
-hey
+<div>
+  <ul style="text-align:center;"">
+    <li style="display: inline;"><a href="{{ settings.site_settings.SocialMediaSettings.twitter }}">Twitter</a></li>
+    <li style="display: inline;"><a href="{{ settings.site_settings.SocialMediaSettings.instagram }}">Instagram</a></li>
+    <li style="display: inline;"><a href="{{ settings.site_settings.SocialMediaSettings.facebook }}">Facebook</a></li>
+    <li style="display: inline;"><a href="{{ settings.site_settings.SocialMediaSettings.youtube }}">YouTube</a></li>
+    <li style="display: inline;"><a href="{{ settings.site_settings.SocialMediaSettings.linkedin }}">LinkedIn</a></li>
+    <li style="display: inline;"><a href="{{ settings.site_settings.SocialMediaSettings.tiktok }}">Tik Tok</a></li>
+  </ul>
+</div>

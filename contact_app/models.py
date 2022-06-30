@@ -4,7 +4,7 @@ from wagtail.models import Page
 from wagtail.fields import RichTextField, StreamField
 from wagtail.admin.edit_handlers import FieldPanel, StreamFieldPanel
 
-from project.blocks import SocialMediaBlock, ContactBlock
+from project.blocks import ContactBlock
 
 
 class ContactPage(Page):
